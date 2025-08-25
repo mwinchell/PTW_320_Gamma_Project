@@ -1,3 +1,9 @@
+/* ======================================================================
+   Technical Writer Tool Chooser — styles.css (with Brand Overrides)
+   NOTE: HTML remains unchanged. Base rules are preserved; brand-only
+   font & color overrides appended at the end to avoid breaking layout.
+   ====================================================================== */
+
 
 :root { --bg:#0b1020; --fg:#e8ebf1; --muted:#a7b0c4; --card:#121937; --accent:#7aa2ff; --accent-2:#2ee6a6; --border:#283154; --focus:#ffcc66; }
 *{box-sizing:border-box} html,body{margin:0;padding:0}
@@ -20,3 +26,241 @@ hr.sep-line{border:none;border-top:1px dashed var(--border);margin:22px 0}
 .footer{margin-top:auto;padding:24px;font-size:12px;color:var(--muted);border-top:1px solid var(--border)}
 .small{font-size:12px;color:var(--muted)} .button{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:rgba(18,25,55,.55)} .button:hover{border-color:#3550a5}
 .skip-link{position:absolute;left:-999px;top:-999px;background:var(--focus);color:#111;padding:8px 12px;border-radius:8px} .skip-link:focus{left:16px;top:16px}
+
+
+/* ========================================================================== */
+/* ==========================================================================
+   Brand Overlay (non-breaking): fonts & colors from old site
+   Include AFTER styles.css to override tokens only.
+   --------------------------------------------------------------------------
+   Sources (colors & fonts) derived from old site CSS:
+   - Headings color: #ba3925
+   - Link color / hover: #2156a5 / #1d4b8f
+   - Header gradient accent: #667eea → #764ba2
+   - Code bg/fg/border: #23272e / #e0e7ff / #444a57
+   - Body font: "Noto Serif"; Headings: "Open Sans"; Code: "Droid Sans Mono"
+   ========================================================================== */
+
+/* Import the exact families used before */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700");
+
+/* Brand tokens */
+:root{
+  --brand-link: #2156a5;
+  --brand-link-hover: #1d4b8f;
+  --brand-heading: #ba3925;
+  --brand-accent-1: #667eea;
+  --brand-accent-2: #764ba2;
+  --brand-code-bg: #23272e;
+  --brand-code-fg: #e0e7ff;
+  --brand-code-border: #444a57;
+}
+
+/* Typography mapping (HTML unchanged) */
+body{
+  font-family: "Noto Serif","DejaVu Serif",serif;
+}
+.header h1,
+h2.title,
+.phase-title,
+.activity-title,
+h3, h4, h5, h6{
+  font-family: "Open Sans","DejaVu Sans",sans-serif;
+  font-weight: 300; /* matches brand's light headings */
+}
+
+/* Links */
+a{ color: var(--brand-link); }
+a:hover, a:focus{ color: var(--brand-link-hover); text-decoration: underline; }
+
+/* Headings / key titles */
+h2.title{ color: var(--brand-heading); }
+.header h1{ color: var(--brand-heading); } /* subtle brand carry-over */
+
+/* Header logo badge picks up legacy gradient accents */
+.header .logo{
+  background: linear-gradient(135deg, var(--brand-accent-1), var(--brand-accent-2)) !important;
+  color: #ffffff !important;
+}
+
+/* Optional: badges pick up accent tint (keeps layout) */
+.badge{
+  background: color-mix(in srgb, var(--brand-accent-1) 16%, transparent) !important;
+  border-color: color-mix(in srgb, var(--brand-accent-1) 40%, transparent) !important;
+}
+
+/* Code blocks (if/when present) */
+pre, code, .listingblock, .literalblock{
+  background: var(--brand-code-bg) !important;
+  color: var(--brand-code-fg) !important;
+  border: 1px solid var(--brand-code-border) !important;
+  font-family: "Droid Sans Mono","DejaVu Sans Mono",monospace !important;
+}
+
+/* Keep cards readable if your base theme is dark — no layout changes */
+.card, .phase, .activity, .tool{
+  /* No change to backgrounds; let base theme handle it */
+  border-color: color-mix(in srgb, var(--brand-accent-1) 14%, transparent);
+}
+
+/* Subtle focus color that echoes brand link */
+:focus-visible{
+  outline-color: var(--brand-link);
+}
+
+/* ======================================================================
+   Brand Overrides (fonts & colors) — merged from brand-overlay.css
+   Include Google Fonts imports and non-breaking color tokens.
+   ====================================================================== */
+
+/* ==========================================================================
+   Brand Overlay (non-breaking): fonts & colors from old site
+   Include AFTER styles.css to override tokens only.
+   --------------------------------------------------------------------------
+   Sources (colors & fonts) derived from old site CSS:
+   - Headings color: #ba3925
+   - Link color / hover: #2156a5 / #1d4b8f
+   - Header gradient accent: #667eea → #764ba2
+   - Code bg/fg/border: #23272e / #e0e7ff / #444a57
+   - Body font: "Noto Serif"; Headings: "Open Sans"; Code: "Droid Sans Mono"
+   ========================================================================== */
+
+/* Import the exact families used before */
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700");
+
+/* Brand tokens */
+:root{
+  --brand-link: #2156a5;
+  --brand-link-hover: #1d4b8f;
+  --brand-heading: #ba3925;
+  --brand-accent-1: #667eea;
+  --brand-accent-2: #764ba2;
+  --brand-code-bg: #23272e;
+  --brand-code-fg: #e0e7ff;
+  --brand-code-border: #444a57;
+}
+
+/* Typography mapping (HTML unchanged) */
+body{
+  font-family: "Noto Serif","DejaVu Serif",serif;
+}
+.header h1,
+h2.title,
+.phase-title,
+.activity-title,
+h3, h4, h5, h6{
+  font-family: "Open Sans","DejaVu Sans",sans-serif;
+  font-weight: 300; /* matches brand's light headings */
+}
+
+/* Links */
+a{ color: var(--brand-link); }
+a:hover, a:focus{ color: var(--brand-link-hover); text-decoration: underline; }
+
+/* Headings / key titles */
+h2.title{ color: var(--brand-heading); }
+.header h1{ color: var(--brand-heading); } /* subtle brand carry-over */
+
+/* Header logo badge picks up legacy gradient accents */
+.header .logo{
+  background: linear-gradient(135deg, var(--brand-accent-1), var(--brand-accent-2)) !important;
+  color: #ffffff !important;
+}
+
+/* Optional: badges pick up accent tint (keeps layout) */
+.badge{
+  background: color-mix(in srgb, var(--brand-accent-1) 16%, transparent) !important;
+  border-color: color-mix(in srgb, var(--brand-accent-1) 40%, transparent) !important;
+}
+
+/* Code blocks (if/when present) */
+pre, code, .listingblock, .literalblock{
+  background: var(--brand-code-bg) !important;
+  color: var(--brand-code-fg) !important;
+  border: 1px solid var(--brand-code-border) !important;
+  font-family: "Droid Sans Mono","DejaVu Sans Mono",monospace !important;
+}
+
+/* Keep cards readable if your base theme is dark — no layout changes */
+.card, .phase, .activity, .tool{
+  /* No change to backgrounds; let base theme handle it */
+  border-color: color-mix(in srgb, var(--brand-accent-1) 14%, transparent);
+}
+
+/* Subtle focus color that echoes brand link */
+:focus-visible{
+  outline-color: var(--brand-link);
+}
+
+
+
+/* ======================================================================
+   Light Background Overrides — ensure site matches old brand look
+   ====================================================================== */
+:root {
+  --bg: #ffffff;
+  --card: #ffffff;
+  --panel: #ffffff;
+  --panel-2: #f8f9fa;
+  --border: #dcdcdc;
+  --fg: #0d1020;
+  --muted: #555555;
+}
+body {
+  background: #ffffff !important;
+  color: var(--fg);
+}
+.card, .phase, .activity, .tool {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 6px rgba(0,0,0,.05);
+}
+
+/* ==========================================================================
+   Light Theme Overrides (non-breaking)
+   Goal: match legacy site's white background while keeping all HTML intact.
+   These rules only adjust colors/shadows; no layout changes.
+   ========================================================================== */
+
+/* Base background + text */
+body {
+  background: #ffffff !important;
+  color: #1a1a1a !important;
+}
+
+/* Header/breadcrumbs separators on light bg */
+.header { border-bottom-color: #e5e7eb !important; }
+.breadcrumbs { color: #4b5563 !important; }
+.breadcrumbs a { color: #4b5563 !important; }
+[aria-current="page"] { color: #1a1a1a !important; }
+
+/* Cards and panels (phases, activities, tools) */
+.card,
+.phase,
+.activity,
+.tool {
+  background: #ffffff !important;
+  border-color: #e5e7eb !important;          /* light gray border */
+  box-shadow: 0 4px 16px rgba(0,0,0,.06) !important;  /* softer shadow */
+}
+
+/* Tool metadata subtler on white */
+.tool .meta,
+.activity-meta,
+.sub { color: #4b5563 !important; }
+
+/* Badges on light background */
+.badge {
+  background: rgba(102, 126, 234, 0.10) !important;
+  border-color: rgba(102, 126, 234, 0.30) !important;
+  color: #1a1a1a !important;
+}
+
+/* Horizontal rule */
+hr.sep-line {
+  border-top-color: #e5e7eb !important;
+  background: none !important;
+}
+
+/* Buttons/links retain brand colors from overlay; ensure hover contrast */
+a:hover { text-decoration: underline; }
