@@ -34,21 +34,25 @@ body {
 /* Layout container */
 .container { max-width: 960px; margin-inline: auto; padding-inline: 1rem; }
 
-/* Header and logo */
+/* Header layout */
 .header {
-  display: flex; align-items: center; gap: .75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   padding: 1rem 0;
   border-bottom: 1px solid var(--border);
-  background: #fff;
+  background: #553fa5; /* purple bar */
+  color: #fff;
 }
 
+/* Logo image */
 .logo {
-  display: flex; align-items: center; justify-content: center;
-  width: 48px; height: 48px; margin-right: .5rem;
-}
+  width: 48px;       /* or whatever size you prefer */
+  height: 48px;
+  object-fit: contain;
+  display: block;
 
-.logo-img {
-  max-width: 100%; max-height: 100%; object-fit: contain; display: block;
+  margin-left: 1rem; /* <-- add space from the left edge */
 }
 
 /* Site title */
