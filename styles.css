@@ -1,266 +1,202 @@
+
+
 /* ======================================================================
-   Griffinclaw Tech Writer Tool Chooser — styles.css (with Brand Overrides)
-   NOTE: HTML remains unchanged. Base rules are preserved; brand-only
-   font & color overrides appended at the end to avoid breaking layout.
+   UI Refresh Overlay (appended 2025-08-27 01:28:22)
+   - Visual style shift to white cards on soft gray
+   - Modern typography, spacing, and accessible focus states
+   - CSS-only: no HTML changes required
    ====================================================================== */
 
-
-:root { --bg:#0b1020; --fg:#e8ebf1; --muted:#a7b0c4; --card:#121937; --accent:#7aa2ff; --accent-2:#2ee6a6; --border:#283154; --focus:#ffcc66; }
-*{box-sizing:border-box} html,body{margin:0;padding:0}
-body{font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";background:radial-gradient(1200px 600px at 80% -10%,#1a2350 0%,var(--bg) 60%);color:var(--fg);line-height:1.5;min-height:100vh;display:flex;flex-direction:column}
-a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
-.container{max-width:1000px;margin:0 auto;padding:24px;width:100%}
-.header{display:flex;align-items:center;gap:16px;padding:16px 0 8px;border-bottom:1px solid var(--border);margin-bottom:16px}
-.header .logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:inline-flex;align-items:center;justify-content:center;color:#0b1020;font-weight:900}
-.header h1{font-size:20px;margin:0;letter-spacing:.3px}
-.header .beta{font-size:12px;padding:2px 8px;border:1px solid var(--border);border-radius:999px;color:var(--muted)}
-.breadcrumbs{font-size:13px;color:var(--muted);margin:8px 0 16px} .breadcrumbs a{color:var(--muted)} .breadcrumbs a:hover{color:var(--fg);text-decoration:none}
-h2.title{font-size:24px;margin:8px 0 4px} .sub{font-size:14px;color:var(--muted);margin-bottom:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.card{background:linear-gradient(180deg,rgba(18,25,55,.9),rgba(18,25,55,.7));border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:0 8px 18px rgba(0,0,0,.25);transition:transform 120ms ease,border-color 120ms ease}
-.card:hover{transform:translateY(-2px);border-color:#39528a} .card h3{margin:0 0 6px;font-size:18px} .card p{margin:0;color:var(--muted);font-size:14px}
-.list{display:grid;gap:12px;margin:12px 0} .list a.item{display:block;padding:12px 14px;border:1px solid var(--border);border-radius:12px;background:rgba(18,25,55,.55)} .item:hover{border-color:#3550a5}
-.tool-list{display:grid;gap:16px} .tool{border:1px solid var(--border);border-radius:14px;padding:14px;background:rgba(18,25,55,.55)} .tool .meta{font-size:12px;color:var(--muted)} .tool .name{font-size:18px;margin:6px 0 4px}
-.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:rgba(122,162,255,.15);border:1px solid rgba(122,162,255,.35);color:var(--fg)} .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-hr.sep-line{border:none;border-top:1px dashed var(--border);margin:22px 0}
-.footer{margin-top:auto;padding:24px;font-size:12px;color:var(--muted);border-top:1px solid var(--border)}
-.small{font-size:12px;color:var(--muted)} .button{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:rgba(18,25,55,.55)} .button:hover{border-color:#3550a5}
-.skip-link{position:absolute;left:-999px;top:-999px;background:var(--focus);color:#111;padding:8px 12px;border-radius:8px} .skip-link:focus{left:16px;top:16px}
-
-
-/* ========================================================================== */
-/* ==========================================================================
-   Brand Overlay (non-breaking): fonts & colors from old site
-   Include AFTER styles.css to override tokens only.
-   --------------------------------------------------------------------------
-   Sources (colors & fonts) derived from old site CSS:
-   - Headings color: #ba3925
-   - Link color / hover: #2156a5 / #1d4b8f
-   - Header gradient accent: #667eea → #764ba2
-   - Code bg/fg/border: #23272e / #e0e7ff / #444a57
-   - Body font: "Noto Serif"; Headings: "Open Sans"; Code: "Droid Sans Mono"
-   ========================================================================== */
-
-/* Import the exact families used before */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700");
-
-/* Brand tokens */
 :root{
-  --brand-link: #2156a5;
-  --brand-link-hover: #1d4b8f;
-  --brand-heading: #ba3925;
-  --brand-accent-1: #667eea;
-  --brand-accent-2: #764ba2;
-  --brand-code-bg: #23272e;
-  --brand-code-fg: #e0e7ff;
-  --brand-code-border: #444a57;
+  --bg: #f7f7f8;
+  --card: #ffffff;
+  --ink: #111318;
+  --ink-muted: #4a4f57;
+  --accent: #2b59ff;
+  --accent-ink: #0f1d5c;
+  --border: #e7e8ea;
+  --shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.08);
 }
 
-/* Typography mapping (HTML unchanged) */
-body{
-  font-family: "Noto Serif","DejaVu Serif",serif;
-}
-.header h1,
-h2.title,
-.phase-title,
-.activity-title,
-h3, h4, h5, h6{
-  font-family: "Open Sans","DejaVu Sans",sans-serif;
-  font-weight: 300; /* matches brand's light headings */
+/* Typography */
+html {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Links */
-a{ color: var(--brand-link); }
-a:hover, a:focus{ color: var(--brand-link-hover); text-decoration: underline; }
-
-/* Headings / key titles */
-h2.title{ color: var(--brand-heading); }
-.header h1{ color: var(--brand-heading); } /* subtle brand carry-over */
-
-/* Header logo badge picks up legacy gradient accents */
-.header .logo{
-  background: linear-gradient(135deg, var(--brand-accent-1), var(--brand-accent-2)) !important;
-  color: #ffffff !important;
+body {
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
 }
 
-/* Optional: badges pick up accent tint (keeps layout) */
-.badge{
-  background: color-mix(in srgb, var(--brand-accent-1) 16%, transparent) !important;
-  border-color: color-mix(in srgb, var(--brand-accent-1) 40%, transparent) !important;
+/* Layout container */
+.container { max-width: 960px; margin-inline: auto; padding-inline: 1rem; }
+
+/* Header and logo */
+.header {
+  display: flex; align-items: center; gap: .75rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  background: #fff;
 }
 
-/* Code blocks (if/when present) */
-pre, code, .listingblock, .literalblock{
-  background: var(--brand-code-bg) !important;
-  color: var(--brand-code-fg) !important;
-  border: 1px solid var(--brand-code-border) !important;
-  font-family: "Droid Sans Mono","DejaVu Sans Mono",monospace !important;
+.logo {
+  display: flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; margin-right: .5rem;
 }
 
-/* Keep cards readable if your base theme is dark — no layout changes */
-.card, .phase, .activity, .tool{
-  /* No change to backgrounds; let base theme handle it */
-  border-color: color-mix(in srgb, var(--brand-accent-1) 14%, transparent);
+.logo-img {
+  max-width: 100%; max-height: 100%; object-fit: contain; display: block;
 }
 
-/* Subtle focus color that echoes brand link */
-:focus-visible{
-  outline-color: var(--brand-link);
+/* Site title */
+.header h1 {
+  font-size: clamp(1.25rem, 1.2rem + 1vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: .2px;
+  margin: 0;
+  color: var(--ink);
 }
 
-/* ======================================================================
-   Brand Overrides (fonts & colors) — merged from brand-overlay.css
-   Include Google Fonts imports and non-breaking color tokens.
-   ====================================================================== */
+/* Breadcrumbs */
+.breadcrumbs {
+  font-size: .95rem; color: var(--ink-muted);
+  padding: .75rem 0 0; margin-bottom: .75rem;
+}
+.breadcrumbs a { color: var(--accent); text-decoration: none; }
+.breadcrumbs a:hover { text-decoration: underline; }
 
-/* ==========================================================================
-   Brand Overlay (non-breaking): fonts & colors from old site
-   Include AFTER styles.css to override tokens only.
-   --------------------------------------------------------------------------
-   Sources (colors & fonts) derived from old site CSS:
-   - Headings color: #ba3925
-   - Link color / hover: #2156a5 / #1d4b8f
-   - Header gradient accent: #667eea → #764ba2
-   - Code bg/fg/border: #23272e / #e0e7ff / #444a57
-   - Body font: "Noto Serif"; Headings: "Open Sans"; Code: "Droid Sans Mono"
-   ========================================================================== */
+/* Page titles and subheads */
+.title {
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  line-height: 1.25; margin: .5rem 0 .25rem;
+}
+.sub { color: var(--ink-muted); margin: 0 0 1rem; }
 
-/* Import the exact families used before */
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700");
-
-/* Brand tokens */
-:root{
-  --brand-link: #2156a5;
-  --brand-link-hover: #1d4b8f;
-  --brand-heading: #ba3925;
-  --brand-accent-1: #667eea;
-  --brand-accent-2: #764ba2;
-  --brand-code-bg: #23272e;
-  --brand-code-fg: #e0e7ff;
-  --brand-code-border: #444a57;
+/* Card grids (trying/phase pages) */
+.grid {
+  display: grid; gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin: 1.25rem 0 2rem;
 }
 
-/* Typography mapping (HTML unchanged) */
-body{
-  font-family: "Noto Serif","DejaVu Serif",serif;
+.card {
+  display: block; background: var(--card); color: inherit;
+  border: 1px solid var(--border); border-radius: 14px;
+  padding: 1rem 1.1rem;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform .08s ease, box-shadow .12s ease, border-color .12s ease;
 }
-.header h1,
-h2.title,
-.phase-title,
-.activity-title,
-h3, h4, h5, h6{
-  font-family: "Open Sans","DejaVu Sans",sans-serif;
-  font-weight: 300; /* matches brand's light headings */
-}
+.card h3 { margin: .25rem 0 .25rem; font-size: 1.05rem; }
+.card p { margin: 0; color: var(--ink-muted); font-size: .95rem; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 2px 6px rgba(0,0,0,.08), 0 10px 28px rgba(0,0,0,.12); border-color: #dfe1e4; }
+.card:focus-visible { outline: 3px solid color-mix(in oklab, var(--accent), white 30%); outline-offset: 3px; }
 
-/* Links */
-a{ color: var(--brand-link); }
-a:hover, a:focus{ color: var(--brand-link-hover); text-decoration: underline; }
+/* Activity pages: tool cards */
+.tool-list[role="list"] { display: grid; gap: 1rem; grid-template-columns: 1fr; margin: 1.25rem 0 2rem; }
+@media (min-width: 860px){ .tool-list[role="list"] { grid-template-columns: 1fr 1fr; } }
 
-/* Headings / key titles */
-h2.title{ color: var(--brand-heading); }
-.header h1{ color: var(--brand-heading); } /* subtle brand carry-over */
-
-/* Header logo badge picks up legacy gradient accents */
-.header .logo{
-  background: linear-gradient(135deg, var(--brand-accent-1), var(--brand-accent-2)) !important;
-  color: #ffffff !important;
+.tool[role="listitem"] {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  box-shadow: var(--shadow);
 }
 
-/* Optional: badges pick up accent tint (keeps layout) */
-.badge{
-  background: color-mix(in srgb, var(--brand-accent-1) 16%, transparent) !important;
-  border-color: color-mix(in srgb, var(--brand-accent-1) 40%, transparent) !important;
+.tool .name[role="heading"] a {
+  color: var(--accent-ink);
+  text-decoration: none;
+  font-weight: 700;
 }
+.tool .name[role="heading"] a:hover { text-decoration: underline; }
+.tool .meta { color: var(--ink-muted); margin-top: .25rem; font-size: .95rem; }
 
-/* Code blocks (if/when present) */
-pre, code, .listingblock, .literalblock{
-  background: var(--brand-code-bg) !important;
-  color: var(--brand-code-fg) !important;
-  border: 1px solid var(--brand-code-border) !important;
-  font-family: "Droid Sans Mono","DejaVu Sans Mono",monospace !important;
+/* General polish */
+a { color: var(--accent); }
+a:hover { text-decoration: underline; }
+
+ul, ol { padding-left: 1.25rem; }
+img { border-radius: 8px; }
+hr.sep-line { border: 0; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+
+/* Nice anchor jump spacing under headers */
+h2, h3 { scroll-margin-top: 96px; }
+
+/* Optional highlight utility */
+mark, .highlight {
+  background: color-mix(in oklab, var(--accent), white 85%);
+  padding: .1em .25em; border-radius: 4px;
 }
-
-/* Keep cards readable if your base theme is dark — no layout changes */
-.card, .phase, .activity, .tool{
-  /* No change to backgrounds; let base theme handle it */
-  border-color: color-mix(in srgb, var(--brand-accent-1) 14%, transparent);
-}
-
-/* Subtle focus color that echoes brand link */
-:focus-visible{
-  outline-color: var(--brand-link);
-}
-
 
 
 /* ======================================================================
-   Light Background Overrides — ensure site matches old brand look
+   Purple theme accent overlay
    ====================================================================== */
 :root {
-  --bg: #ffffff;
-  --card: #ffffff;
-  --panel: #ffffff;
-  --panel-2: #f8f9fa;
-  --border: #dcdcdc;
-  --fg: #0d1020;
-  --muted: #555555;
-}
-body {
-  background: #ffffff !important;
-  color: var(--fg);
-}
-.card, .phase, .activity, .tool {
-  background: #ffffff;
-  border: 1px solid var(--border);
-  box-shadow: 0 2px 6px rgba(0,0,0,.05);
+  --purple: #7048e8;    /* main purple accent */
+  --purple-bg: #f4f1ff; /* soft purple background */
 }
 
-/* ==========================================================================
-   Light Theme Overrides (non-breaking)
-   Goal: match legacy site's white background while keeping all HTML intact.
-   These rules only adjust colors/shadows; no layout changes.
-   ========================================================================== */
-
-/* Base background + text */
-body {
-  background: #ffffff !important;
-  color: #1a1a1a !important;
+/* Title block styling */
+.title-block {
+  background-color: var(--purple-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
 }
 
-/* Header/breadcrumbs separators on light bg */
-.header { border-bottom-color: #e5e7eb !important; }
-.breadcrumbs { color: #4b5563 !important; }
-.breadcrumbs a { color: #4b5563 !important; }
-[aria-current="page"] { color: #1a1a1a !important; }
-
-/* Cards and panels (phases, activities, tools) */
-.card,
-.phase,
-.activity,
-.tool {
-  background: #ffffff !important;
-  border-color: #e5e7eb !important;          /* light gray border */
-  box-shadow: 0 4px 16px rgba(0,0,0,.06) !important;  /* softer shadow */
+/* Cards purple accent */
+.card, .tool[role="listitem"] {
+  border-color: var(--purple);
+}
+.card:hover, .tool[role="listitem"]:hover {
+  box-shadow: 0 2px 6px rgba(112,72,232,0.6), 0 10px 28px rgba(112,72,232,0.3);
 }
 
-/* Tool metadata subtler on white */
-.tool .meta,
-.activity-meta,
-.sub { color: #4b5563 !important; }
-
-/* Badges on light background */
-.badge {
-  background: rgba(102, 126, 234, 0.10) !important;
-  border-color: rgba(102, 126, 234, 0.30) !important;
-  color: #1a1a1a !important;
+/* Headings/links in cards purple */
+.card h3 a, .tool .name[role="heading"] a {
+  color: var(--purple);
 }
 
-/* Horizontal rule */
-hr.sep-line {
-  border-top-color: #e5e7eb !important;
-  background: none !important;
+
+/* ======================================================================
+   Extra purple styling for header and page title
+   ====================================================================== */
+
+/* Page title text purple */
+.title {
+  color: var(--purple);
 }
 
-/* Buttons/links retain brand colors from overlay; ensure hover contrast */
-a:hover { text-decoration: underline; }
+/* Header background purple with white text */
+header.container.header[role="banner"] {
+  background-color: var(--purple);
+  color: #ffffff;
+}
+header.container.header[role="banner"] h1 {
+  color: #ffffff;
+}
+
+
+/* ======================================================================
+   Refined purple shade (#553fa5) for header and title
+   ====================================================================== */
+
+/* Page title text */
+.title {
+  color: #553fa5;
+}
+
+/* Header bar */
+header.container.header[role="banner"] {
+  background-color: #553fa5;
+  color: #ffffff;
+}
+
+header.container.header[role="banner"] h1 {
+  color: #ffffff;
+}
